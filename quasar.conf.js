@@ -55,13 +55,13 @@ module.exports = configure((ctx) => ({
 
   // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
   build: {
-    vueRouterMode: 'hash', // available values: 'hash', 'history'
+    vueRouterMode: 'history', // available values: 'hash', 'history'
     env: ctx.dev
       ? {
-        PROXY_URL: 'https://thingproxy.freeboard.io/fetch',
+        BASE_URL: '/api',
       }
       : {
-        PROXY_URL: 'https://thingproxy.freeboard.io/fetch',
+        BASE_URL: '/api',
       },
     // transpile: false,
 

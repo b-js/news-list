@@ -3,13 +3,11 @@ import { xml2js } from 'xml-js';
 import api from './HttpGateway';
 
 export const getData = async (url: string, page: number) => {
-  const result = await api(`/${url}`, {
+  const result = await api('', {
     method: 'get',
     responseType: 'json',
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
     params: {
+      url,
       page,
     },
   });

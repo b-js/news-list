@@ -15,7 +15,7 @@ declare module '@vue/runtime-core' {
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: String(`${process.env.PROXY_URL}`), // url = base url + request url
+  baseURL: String(`${process.env.BASE_URL}`), // url = base url + request url
   timeout: 30000,
   paramsSerializer: (params) => Qs.stringify(params, { arrayFormat: 'indices' }),
   // withCredentials: true, // send cookies when cross-domain requests
