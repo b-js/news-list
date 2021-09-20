@@ -8,8 +8,8 @@
           bg-color="white"
         >
           <template v-slot:append>
-            <q-icon v-if="filter_value !== ''" name="close" @click="filter_value = ''" class="cursor-pointer" />
-            <q-icon name="search" size="md"/>
+            <q-icon v-if="filter_value !== ''" name="close" @click="filter_value = ''" class="main-app__header_filter_icon" />
+            <q-icon name="search" size="md" class="main-app__header_filter_icon"/>
           </template>
         </q-input>
       </template>

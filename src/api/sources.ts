@@ -3,7 +3,7 @@ import { xml2js } from 'xml-js';
 import api from './HttpGateway';
 
 export const getData = async (url: string, page: number) => {
-  const result = await api('', {
+  const result = await api(process.env.NODE_ENV === 'production' ? '' : `/${url}`, {
     method: 'get',
     responseType: 'json',
     params: {

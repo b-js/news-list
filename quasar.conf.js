@@ -58,7 +58,7 @@ module.exports = configure((ctx) => ({
     vueRouterMode: 'history', // available values: 'hash', 'history'
     env: ctx.dev
       ? {
-        BASE_URL: '/api',
+        BASE_URL: 'https://thingproxy.freeboard.io/fetch',
       }
       : {
         BASE_URL: '/api',
