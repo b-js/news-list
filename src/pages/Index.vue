@@ -15,9 +15,9 @@
       </template>
     </header-component>
     <q-separator class="main-app__separator"/>
-    <div class="main-app__tabs row">
+    <div class="main-app_tabs row">
       <q-tabs indicator-color="transparent" v-model="target_source" shrink stretch dense active-color="black">
-        <q-tab class="text-primary"
+        <q-tab class="text-primary main-app_tabs_tab"
                name="all">
           <template v-slot:default>
             <b>Все</b>
@@ -26,7 +26,7 @@
         <q-tab
           v-for="(data_source, index) in data_sources_array"
           :key="index"
-          class="text-primary"
+          class="text-primary main-app_tabs_tab"
           :name="data_source.label"
         >
           <template v-slot:default>
@@ -140,6 +140,17 @@ export default class PageIndex extends Vue {
     width: 100%;
     display: flex;
     flex-direction: column;
+    &_tabs {
+      font-size: 1em;
+      @media (max-width: 360px) {
+        font-size: 0.8em;
+      }
+        &_tab {
+          @media (max-width: 360px) {
+            padding: 0 8px;
+          }
+      }
+    }
     &_content {
       transition: opacity .5s;
       padding-top: 24px;

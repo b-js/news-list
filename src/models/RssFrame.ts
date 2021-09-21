@@ -130,7 +130,7 @@ export class RssDataAll extends Rss {
     this.items_set = new Set([...items]);
   }
   get items() {
-    return Array.from(this.items_set).splice(0).sort((a, b) => b.timestamp - a.timestamp);
+    return Array.from(this.items_set).slice().sort((a, b) => b.timestamp - a.timestamp);
   }
   async nextPage(): Promise<void> {
     return Promise.resolve(undefined);

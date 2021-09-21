@@ -22,7 +22,6 @@
 import { Vue } from 'vue-class-component';
 
 class Props {
-  // readonly filter_value = prop<string>({ required: true });
 }
 
 export default class HeaderComponent extends Vue.with(Props) {
@@ -52,14 +51,14 @@ export default class HeaderComponent extends Vue.with(Props) {
           margin: 0 0 0 0;
           font-size: 1.8em;
           font-weight: bold;
-          width: 70%;
+          width: 80%;
           @media (min-width: 1024px) {
             width: 50%;
                       font-size: 2.5em;
           }
         }
         &-refresh {
-          width: 30%;
+          width: 20%;
                       text-align: right;
           @media (min-width: 1024px) {
             text-align: left;
