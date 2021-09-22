@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div class="item-card-footer">
-      <div>{{source}}</div>
-      <q-space/>
-      <div>{{date}}</div>
-    </div>
-</div>
+  <div class="item-card-footer">
+    <div>{{source}}</div>
+    <q-space/>
+    <div>{{date}}</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,7 +22,6 @@ export default class ItemCardFooter extends Vue.with(Props) {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      height: 20%;
       opacity: 0.5;
     }
 </style>

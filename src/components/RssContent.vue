@@ -1,20 +1,18 @@
 <template>
   <div style="height: 100%">
-    <div v-if="is_grid" class="grid-view q-gutter-y-lg">
+    <div v-if="is_grid" class="grid-view">
       <grid-card
         class="grid-card"
         v-for="(item, index) in items_visible"
         :label="item.source" :item="item"
         :key="index"/>
     </div>
-    <div v-if="is_list" class="q-gutter-y-lg">
+    <div v-if="is_list" class="list-view">
       <list-card
         class="list-card"
-        style=""
         v-for="(item, index) in items_visible" :label="item.source" :item="item" :key="index"/>
     </div>
-    <!-- style="display: flex; align-items: flex-end; justify-content: center" -->
-    <div class="q-pa-lg flex flex-center">
+    <div class="main-app_content_pagination">
       <q-pagination
         :value="pagination"
         @update:model-value="updatePagination"

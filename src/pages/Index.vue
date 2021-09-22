@@ -16,7 +16,7 @@
     </header-component>
     <q-separator class="main-app__separator"/>
     <div class="main-app_tabs row">
-      <q-tabs indicator-color="transparent" v-model="target_source" shrink stretch dense active-color="black">
+      <q-tabs no-caps indicator-color="transparent" v-model="target_source" shrink stretch dense active-color="black">
         <q-tab class="text-primary main-app_tabs_tab"
                name="all">
           <template v-slot:default>
@@ -36,17 +36,13 @@
       </q-tabs>
       <q-space/>
       <div>
-        <q-btn-toggle
-          v-model="view"
-          model-value="list"
-          flat
-          dense
-          color="grey"
-          toggle-color="primary"
-          :options="[
-          {icon: 'fas fa-th-large', value: 'grid'},
-          {icon: 'fas fa-th-list', value: 'list'},
-        ]"></q-btn-toggle>
+        <q-btn flat dense size="11px" @click="view = 'grid'" icon="fas fa-th-large" :style="{ color: view === 'grid' ? '#0029FF' : '#C4C4C4'}"></q-btn>
+        <q-btn flat dense size="11px" @click="view = 'list'" :style="{ color: view === 'list' ? '#0029FF' : '#C4C4C4'}">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="18" height="8" :fill="view === 'list' ? '#0029FF' : '#C4C4C4'"/>
+            <rect y="10" width="18" height="8" :fill="view === 'list' ? '#0029FF' : '#C4C4C4'"/>
+          </svg>
+        </q-btn>
       </div>
     </div>
     <div class="main-app_content row">
@@ -96,16 +92,16 @@ import { View } from 'src/models/types';
 export default class PageIndex extends Vue {
   filter_value: string = '';
   loading = true;
-  target_source: string = 'lenta.ru';
-  view: View = View.GRID;
+  target_source: string = 'Lenta.ru';
+  view: View = View.LIST;
   pagination: Record<string, number> = {};
   source_urls: ISource[] = [
     {
-      label: 'mos.ru',
+      label: 'Mos.ru',
       url: 'https://www.mos.ru/rss',
     },
     {
-      label: 'lenta.ru',
+      label: 'Lenta.ru',
       url: 'https://lenta.ru/rss/news',
     },
   ]
@@ -133,15 +129,20 @@ export default class PageIndex extends Vue {
 </script>
 <style lang="scss">
   .main-app {
-    padding: 5px 10px;
     margin: 0 auto 0 auto;
     position: relative;
-    max-width: 1020px;
+    max-width: 1060px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1080px) {
+          padding: 0 23px 0 20px;
+
+    }
     &_tabs {
-      font-size: 1em;
+      font-size: 14px;
+      height: 18px;
+      text-transform: capitalize;
       @media (max-width: 360px) {
         font-size: 0.8em;
       }
@@ -153,19 +154,27 @@ export default class PageIndex extends Vue {
     }
     &_content {
       transition: opacity .5s;
-      padding-top: 24px;
+      padding-top: 8px;
       flex: 1;
       &_tab_panels {
         background-color: #FBFBFB;
         &_panel {
-          padding: 2px;
+          padding: 0;
         }
+      }
+      &_pagination {
+        padding-top: 50px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
 
   .grid-view {
-    height: 90%;
+    // height: 90%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -178,8 +187,8 @@ export default class PageIndex extends Vue {
 
   .grid-view > div {
     display: flex;
-    flex-basis: calc(50% - 12px);
-    max-height: calc(50% - 24px);
+    flex-basis: calc(50% - 10px);
+    max-height: calc(50% - 20px);
     // max-height: calc(50% - 24px);
     flex-direction: column;
     justify-content: space-between;
@@ -188,7 +197,22 @@ export default class PageIndex extends Vue {
       // height: auto;
     }
   }
-  .list-card {
-    height: 33%;
-  }
+  // .list-card {
+  //   // height: 33%;
+  // }
+  .q-tabs--dense .q-tab {
+    min-height: 16px;
+    height: 16px;
+    padding: 0 8px 0 0;
+}
+.q-panel > div {
+    height: auto;
+    // width: 100%;
+}
+.main-app .q-tab__content {
+  min-width: auto;
+}
+.main-app_tabs .self-stretch {
+  align-self: unset;
+}
 </style>

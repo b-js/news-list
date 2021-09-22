@@ -1,35 +1,40 @@
 <template>
   <div>
     <q-card class="list-item-card">
-      <q-card-section class="list-item-card_row row">
-        <div class="col-sm-3 col-12">
-          <q-carousel
-            v-if="item.enclosure"
-            class="q-pa-sm list-item-card_row_carousel"
-            swipeable
-            animated
-            v-model="slide"
-            :autoplay="true"
-            infinite
-          >
-            <q-carousel-slide v-for="(img, index) in item.enclosure" :key="index" :name="index" :img-src="img._attributes.url"/>
-          </q-carousel>
-        </div>
-        <div class="col-sm-9 col-12">
-          <div class="q-pa-sm">
-            <div class="text-primary">
-              <b>
-                <a class="list-item-card_row_link" :href="item.link" target="_blank">{{item.title}}</a>
-              </b>
+      <q-card-section class="card-section">
+        <div class="list-item-card_row">
+          <div class="list-item-card_row-image">
+            <q-carousel
+              v-if="item.enclosure"
+              class="list-item-card_row-image-carousel"
+              swipeable
+              animated
+              v-model="slide"
+              :autoplay="true"
+              infinite
+            >
+              <q-carousel-slide v-for="(img, index) in item.enclosure" :key="index" :name="index" :img-src="img._attributes.url"/>
+            </q-carousel>
+          </div>
+          <div class="list-item-card_row-body">
+            <div class="text-primary list-item-card_row-body-title">
+                <b>
+                  <a class="list-item-card_row_link" :href="item.link" target="_blank">{{item.title}}</a>
+                </b>
             </div>
-            <div class="list-item-card_row_body">
+            <div class="list-item-card_row-body-description">
               {{item.description}}
+            </div>
+            <div v-if="$q.screen.width <= 800" class="list-item-card_row-body-link">
+              <a :href="item.link" target="_blank">
+                Подробнее
+              </a>
             </div>
           </div>
         </div>
-      </q-card-section>
-      <q-card-section>
-        <item-card-footer :date="item.date" :source="item.source"/>
+        <div class="list-item-card_footer">
+          <item-card-footer :date="item.date" :source="item.source"/>
+        </div>
       </q-card-section>
     </q-card>
   </div>
@@ -56,22 +61,86 @@ export default class ListCard extends Vue.with(Props) {
 </script>
 <style lang="scss">
   .list-item-card {
+    margin-top: 20px;
     background-color: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
     border-radius: 3px;
+    max-height: 190px;
+    padding: 0;
+    @media (max-width: 800px) {
+      max-height: unset;
+    }
     &_row {
-      height: 80%;
-      max-height: 80%;
-      padding: 16px 16px;
-      &_carousel {
-        max-height: 150px;
+      &-image {
+        width: 25%;
+        margin: 30px 30px 35px 30px;
+        @media (max-width: 800px) {
+          width: auto;
+          padding-top: 20px;
+          margin: 0;
+        }
+        &-carousel {
+          width: 200px;
+          height: 100px;
+          @media (max-width: 800px) {
+            width: 100%;
+            height: 166px;
+          }
+        }
       }
-      &_link {
-        height: 10%;
+      &-body {
+        width: 75%;
+        margin: 30px 28px 27px 0;
+        @media (max-width: 800px) {
+          width: 100%;
+        }
+        &-title {
+          margin-bottom: 20px;
+          height: 44px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        &-description {
+          height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        &-link {
+          margin-top: 20px;
+        }
+      }
+      display: flex;
+      @media (max-width: 800px) {
+        display: block;
+        padding: 0 22px 0 22px;
       }
       &_body {
         padding-top: 16px;
       }
+    }
+    &_footer {
+      height: 28px;
+      margin: 0 30px 4px 30px;
+      padding: 0;
+      background-color: #FCFCFC;
+      text-transform: lowercase;
+      @media (max-width: 800px) {
+        margin: 0 22px 4px 22px;
+      }
+    }
+  }
+  .card-section {
+    padding: 0;
+  }
+  .list-item-card:first-of-type {
+    @media (max-width: 800px) {
+      margin-top: 17px;
     }
   }
 </style>

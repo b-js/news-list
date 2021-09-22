@@ -8,7 +8,7 @@
     <q-card-section class="grid-item-card_body">{{item.description}}</q-card-section>
     <q-card-section class="grid-item-card_link">
       <a :href="item.link" target="_blank">
-        Подробнее...
+        Подробнее
       </a>
     </q-card-section>
     <q-card-section class="grid-item-card_footer">
@@ -36,24 +36,40 @@ export default class ListCard extends Vue.with(Props) {
 </script>
 <style lang="scss">
 .grid-item-card {
-  height: 100%;
+    min-height: 256px;
+    margin-top: 20px;
     background-color: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
     border-radius: 3px;
     &_title {
-      height: 20%;
+      padding: 0;
+      height: 66px;
+      margin: 30px 30px 25px 30px;
       &_link {
         text-decoration: none;
       }
     }
     &_body {
-      overflow: hidden; height: 60%
+      margin: 0 30px 27px 30px;
+      padding: 0;
+      height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     &_link {
-      height: 10%;
+      height: 20px;
+      margin: 0 30px 20px 30px;
+      padding: 0;
     }
     &_footer {
-      height: 10%;
+      height: 20px;
+      margin: 4px 30px 4px 30px;
+      padding: 0;
+      background-color: #FCFCFC;
+      text-transform: lowercase;
     }
   }
 </style>
