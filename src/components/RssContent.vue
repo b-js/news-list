@@ -16,7 +16,10 @@
       <q-pagination
         :value="pagination"
         @update:model-value="updatePagination"
-        color="primary"
+        active-color="primary"
+        color="black"
+        :flat="true"
+        dense
         :max="Math.ceil(items_filtered.length / this.items_limit[this.view])"
         :max-pages="6"
         boundary-numbers
@@ -80,3 +83,20 @@ export default class RssContent extends Vue.with(Props) {
   }
 }
 </script>
+<style lang="scss">
+  .q-pagination > .q-btn.q-btn--standard:first-of-type {
+    background: none !important;
+    color: #0029FF !important;
+  }
+  .q-pagination > .q-btn.q-btn--standard:first-of-type::before {
+    box-shadow: none !important;
+  }
+  .q-pagination > .q-btn {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .q-pagination > div > .q-btn {
+    font-weight: 700;
+    font-size: 18px;
+  }
+</style>

@@ -45,6 +45,9 @@ export default class ListCard extends Vue.with(Props) {
       padding: 0;
       height: 66px;
       margin: 30px 30px 25px 30px;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
       &_link {
         text-decoration: none;
       }

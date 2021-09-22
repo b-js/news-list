@@ -98,6 +98,9 @@ export default class ListCard extends Vue.with(Props) {
           margin-bottom: 20px;
           height: 44px;
           overflow: hidden;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px;
           text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -105,6 +108,7 @@ export default class ListCard extends Vue.with(Props) {
         }
         &-description {
           height: 40px;
+          line-height: 20px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;

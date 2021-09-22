@@ -169,6 +169,7 @@ export default class PageIndex extends Vue {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        font-weight: 700;
       }
     }
   }
@@ -182,6 +183,7 @@ export default class PageIndex extends Vue {
     @media (max-width: 800px) {
       justify-content: center;
       height: auto;
+      flex-direction: column;
     }
   }
 
